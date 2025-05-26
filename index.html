@@ -10,27 +10,28 @@
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background-color: #f5f7fa;
+      background: linear-gradient(to bottom, #f3f4f6 0%, #e5e7eb 100%);
       color: #1f2937;
     }
     header {
-      background-color: #0f172a;
-      padding: 3rem 2rem 2rem;
+      background: linear-gradient(145deg, #00c6ff, #0072ff);
+      padding: 3.5rem 2rem 2.5rem;
       text-align: center;
       color: white;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     }
     .logo {
-      max-width: 220px;
+      max-width: 200px;
       height: auto;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
     }
     header h1 {
-      font-size: 2.7rem;
-      margin-bottom: 0.5rem;
+      font-size: 2.5rem;
+      margin-bottom: 0.25rem;
     }
     header p {
-      font-size: 1.15rem;
-      opacity: 0.9;
+      font-size: 1rem;
+      opacity: 0.95;
       max-width: 700px;
       margin: auto;
     }
@@ -62,12 +63,13 @@
       background-color: white;
       border-radius: 1rem;
       padding: 2rem;
-      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
       text-align: center;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .service-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
     }
     .service-card img {
       height: 60px;
@@ -93,10 +95,11 @@
       color: #374151;
     }
     footer {
-      background-color: #0f172a;
+      background-color: #111827;
       color: white;
       text-align: center;
-      padding: 1.5rem;
+      padding: 2rem 1.5rem;
+      font-size: 0.95rem;
     }
     a {
       color: #3b82f6;
@@ -117,12 +120,12 @@
 
   <section class="services">
     <div class="service-card">
-      <img src="https://img.icons8.com/color/96/000000/gift-card.png" alt="Gift Cards" />
+      <img src="https://img.icons8.com/color/96/gift-card.png" alt="Gift Cards" />
       <h3>Gift Cards</h3>
       <p>Instant access to global brands. Ideal for loyalty programs, digital gifting, or reselling.</p>
     </div>
     <div class="service-card">
-      <img src="https://img.icons8.com/fluency/96/credit-card-front.png" alt="Virtual Cards" />
+      <img src="https://img.icons8.com/fluency/96/bank-card-back-side.png" alt="Virtual Cards" />
       <h3>Virtual Prepaid Cards</h3>
       <p>Issue and manage non-reloadable Visa or Mastercard cards. Secure and global-ready.</p>
     </div>
@@ -132,7 +135,7 @@
       <p>Connect with our flight engine to book global routes at competitive rates for your clients.</p>
     </div>
     <div class="service-card">
-      <img src="https://img.icons8.com/fluency/96/hotel-room.png" alt="Hotel Booking" />
+      <img src="https://img.icons8.com/fluency/96/5-star-hotel.png" alt="Hotel Booking" />
       <h3>Hotel Booking</h3>
       <p>Integrate 100,000+ hotel deals globally. Perfect for travel platforms and agents.</p>
     </div>
@@ -150,8 +153,12 @@
       <img src="https://img.icons8.com/fluency/96/electricity.png" alt="Utilities Payment" />
       <h3>Utilities Payment</h3>
       <p>Enable bill payment for electricity, water, internet, and more with one integration.</p>
+        <div class="service-card">
+      <img src="https://img.icons8.com/color/96/sim-card-chip.png" alt="eSIM" />
+      <h3>eSIM</h3>
+      <p>Offer digital eSIM plans for global data roaming. Perfect for travel, business, and nomads.</p>
     </div>
-  </section>
+$1
 
   <section class="trust">
     <h2>Trusted by Businesses Worldwide</h2>
