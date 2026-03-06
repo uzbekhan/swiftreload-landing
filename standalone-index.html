@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SwiftReload Group — Digital Connectivity Ecosystem</title>
+  <meta name="description" content="SwiftReload Group is a fast-growing digital technology company building a global ecosystem of innovative solutions for connectivity." />
+  <link rel="icon" type="image/webp" href="Swiftreload_grp_icon.webp" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0a0a0a;
+      --card: #111111;
+      --border: rgba(255,255,255,0.08);
+      --fg: #e8e8e8;
+      --fg-muted: #888888;
+      --fg-dim: rgba(255,255,255,0.35);
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 2rem; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+      background: var(--card); border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 96px;
+    }
+    .nav-logo img { height: 72px; }
+    .nav-links { display: flex; align-items: center; gap: 2.5rem; }
+    .nav-links a { font-size: 0.875rem; color: var(--fg-muted); transition: color 0.3s; letter-spacing: 0.03em; }
+    .nav-links a:hover { color: var(--fg); }
+    .nav-cta {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 9999px; padding: 0.6rem 1.5rem; font-size: 0.875rem;
+      font-weight: 500; color: var(--fg); transition: all 0.3s; backdrop-filter: blur(12px);
+    }
+    .nav-cta:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.18); }
+    .hamburger { display: none; background: none; border: none; color: var(--fg); cursor: pointer; padding: 0.5rem; }
+    .hamburger svg { width: 24px; height: 24px; }
+    .mobile-menu {
+      display: none; flex-direction: column; gap: 1.25rem;
+      padding: 1.5rem 2rem; background: var(--card); border-bottom: 1px solid var(--border);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 0.875rem; color: var(--fg-muted); }
+    .mobile-menu .nav-cta { text-align: center; }
+
+    /* HERO */
+    .hero {
+      position: relative; overflow: hidden; padding: 10rem 0 5rem;
+      background: var(--bg);
+    }
+    .hero-bg-img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; opacity: 0.5;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(to right, var(--bg), rgba(10,10,10,0.85), rgba(10,10,10,0.3));
+    }
+    .hero::after {
+      content: ''; position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(to bottom, rgba(10,10,10,0.5), transparent 40%, var(--bg));
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 640px; }
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 700;
+      line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #ffffff 0%, #a0a0a0 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p { color: var(--fg-muted); max-width: 420px; margin-bottom: 2rem; font-size: 1rem; line-height: 1.7; }
+    .hero-buttons { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .btn-primary {
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 9999px; padding: 0.75rem 1.75rem; font-weight: 600;
+      color: var(--fg); font-size: 0.875rem; transition: all 0.3s; backdrop-filter: blur(12px);
+    }
+    .btn-primary:hover { background: rgba(255,255,255,0.1); box-shadow: 0 0 20px rgba(255,255,255,0.05); }
+    .btn-secondary {
+      border: 1px solid var(--border); border-radius: 9999px;
+      padding: 0.75rem 1.75rem; font-size: 0.875rem; color: var(--fg-muted); transition: all 0.3s;
+    }
+    .btn-secondary:hover { color: var(--fg); border-color: rgba(255,255,255,0.18); }
+    .trust-strip {
+      position: relative; z-index: 2; border-top: 1px solid var(--border);
+      margin-top: 3rem; padding-top: 1.25rem;
+      display: flex; flex-wrap: wrap; gap: 2rem;
+    }
+    .trust-strip span {
+      font-size: 0.68rem; color: var(--fg-dim); text-transform: uppercase;
+      letter-spacing: 0.15em; font-weight: 500;
+    }
+
+    /* SECTIONS */
+    section { padding: 6rem 0; }
+    .section-label {
+      font-size: 0.68rem; color: var(--fg-dim); text-transform: uppercase;
+      letter-spacing: 0.25em; font-weight: 600; margin-bottom: 1rem; display: block;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 700; line-height: 1.15;
+      background: linear-gradient(135deg, #ffffff 0%, #999 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    /* GLASS CARD */
+    .glass {
+      background: rgba(255,255,255,0.03);
+      border-radius: 0.75rem; padding: 2rem; backdrop-filter: blur(12px);
+      transition: all 0.5s;
+      border: 1px solid transparent;
+      position: relative;
+    }
+    .glass::before {
+      content: '';
+      position: absolute; inset: 0; border-radius: inherit; padding: 1px;
+      background: linear-gradient(135deg, rgba(200,210,220,0.25) 0%, rgba(180,190,200,0.08) 30%, rgba(200,210,220,0.2) 50%, rgba(180,190,200,0.05) 70%, rgba(200,210,220,0.2) 100%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude;
+      pointer-events: none;
+    }
+    .glass:hover { background: rgba(255,255,255,0.05); box-shadow: 0 0 30px rgba(255,255,255,0.02); }
+    .glass h3 {
+      font-size: 0.68rem; color: var(--fg-dim); text-transform: uppercase;
+      letter-spacing: 0.25em; font-weight: 600; margin-bottom: 0.75rem;
+    }
+    .glass p { color: rgba(255,255,255,0.85); line-height: 1.7; }
+
+    /* ABOUT */
+    .about-grid { display: grid; grid-template-columns: 0.8fr 1fr; gap: 4rem; margin-bottom: 5rem; align-items: start; }
+    .about-desc { color: var(--fg-muted); line-height: 1.8; padding-top: 2rem; }
+    .mission-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 5rem; }
+    .pillars-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    .pillar { padding: 1.5rem; }
+    .pillar-icon { width: 20px; height: 20px; color: var(--fg-dim); margin-bottom: 1rem; }
+    .pillar h3 { font-size: 0.875rem; font-weight: 600; color: var(--fg); margin-bottom: 0.375rem;
+      text-transform: none; letter-spacing: 0; }
+    .pillar p { font-size: 0.75rem; color: var(--fg-muted); line-height: 1.6; }
+
+    /* BRANDS */
+    .brands-header { display: flex; justify-content: space-between; align-items: flex-end; gap: 2rem; margin-bottom: 3.5rem; }
+    .brands-desc { color: var(--fg-muted); font-size: 0.875rem; max-width: 420px; line-height: 1.7; }
+    .brands-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .brand-card { position: relative; overflow: hidden; padding: 1.5rem; }
+    .brand-card h3 { font-size: 0.875rem; font-weight: 600; color: var(--fg); margin-bottom: 0.375rem;
+      text-transform: none; letter-spacing: 0; }
+    .brand-card p { font-size: 0.75rem; color: var(--fg-muted); line-height: 1.6; }
+
+    /* DIVIDER */
+    .divider { width: 12rem; height: 1px; margin: 0 auto;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent); }
+
+    /* CTA */
+    .cta-box { text-align: center; padding: 4rem; border-radius: 1rem; }
+    .cta-box h2 { margin-bottom: 1rem; }
+    .cta-box p { color: var(--fg-muted); font-size: 0.875rem; max-width: 420px; margin: 0 auto 2rem; line-height: 1.7; }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 3rem 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .footer-brand { display: flex; align-items: center; gap: 0.75rem; }
+    .footer-brand img { height: 28px; width: 28px; border-radius: 6px; }
+    .footer-brand span { font-size: 0.875rem; font-weight: 600; }
+    .footer-copy { font-size: 0.75rem; color: var(--fg-muted); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+      .about-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .about-desc { padding-top: 0; }
+      .mission-grid { grid-template-columns: 1fr; }
+      .pillars-grid { grid-template-columns: 1fr 1fr; }
+      .brands-header { flex-direction: column; align-items: flex-start; }
+      .brands-grid { grid-template-columns: 1fr 1fr; }
+      .cta-box { padding: 2.5rem 1.5rem; }
+    }
+    @media (max-width: 480px) {
+      .brands-grid { grid-template-columns: 1fr; }
+      .pillars-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="container nav-inner">
+    <a href="/" class="nav-logo"><img src="swiftreload_logo.webp" alt="SwiftReload Group" /></a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#brands">Brands</a>
+      <a href="mailto:partnership@swiftreload.com" class="nav-cta">Get in Touch</a>
+    </div>
+    <button class="hamburger" onclick="document.getElementById('mob').classList.toggle('open')" aria-label="Menu">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </div>
+  <div id="mob" class="mobile-menu">
+    <a href="#about" onclick="document.getElementById('mob').classList.remove('open')">About</a>
+    <a href="#brands" onclick="document.getElementById('mob').classList.remove('open')">Brands</a>
+    <a href="mailto:partnership@swiftreload.com" class="nav-cta" onclick="document.getElementById('mob').classList.remove('open')">Get in Touch</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <img src="hero-bg.jpg" alt="" class="hero-bg-img" />
+  <div class="container">
+    <div class="hero-content">
+      <h1>Building a Global Ecosystem for Digital Connectivity</h1>
+      <p>SwiftReload Group is a fast-growing digital technology company delivering innovative solutions for connectivity — serving migrants, digital nomads, and freelancers worldwide.</p>
+      <div class="hero-buttons">
+        <a href="mailto:partnership@swiftreload.com" class="btn-primary">Get in Touch</a>
+        <a href="#brands" class="btn-secondary">Our Brands</a>
+      </div>
+    </div>
+    <div class="trust-strip">
+      <span>Global Reach</span>
+      <span>Multi-Brand Portfolio</span>
+      <span>Ethical Innovation</span>
+      <span>Community Impact</span>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <span class="section-label">About</span>
+        <h2 class="section-title">Digital Freedom.<br>Community Impact.</h2>
+      </div>
+      <p class="about-desc">SwiftReload Group is a fast-growing digital technology company building a global ecosystem of innovative solutions for connectivity. We serve migrants, digital nomads, and freelancers worldwide, helping them stay connected and access essential digital services anytime, anywhere.</p>
+    </div>
+
+    <div class="mission-grid">
+      <div class="glass">
+        <h3>Mission</h3>
+        <p>Go beyond technology to drive ethical, inclusive innovation — allocating profits to support charitable initiatives in education, healthcare, food, and clean water access across Asia, Africa, and South America.</p>
+      </div>
+      <div class="glass">
+        <h3>Vision</h3>
+        <p>Shape a future where digital freedom and community impact work hand-in-hand — empowering people everywhere to stay connected and thrive.</p>
+      </div>
+    </div>
+
+    <div class="pillars-grid">
+      <div class="glass pillar">
+        <svg class="pillar-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <h3>Global Reach</h3>
+        <p>Serving migrants, digital nomads, and freelancers across the world.</p>
+      </div>
+      <div class="glass pillar">
+        <svg class="pillar-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2v4m6.93 1.07-2.83 2.83M22 12h-4m-1.07 6.93-2.83-2.83M12 18v4m-4.93-5.07-2.83 2.83M6 12H2m5.07-4.93L4.24 4.24"/><circle cx="12" cy="12" r="4"/></svg>
+        <h3>Innovation</h3>
+        <p>Building cutting-edge digital solutions for connectivity and services.</p>
+      </div>
+      <div class="glass pillar">
+        <svg class="pillar-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+        <h3>Social Impact</h3>
+        <p>Supporting education, healthcare, food, and clean water initiatives.</p>
+      </div>
+      <div class="glass pillar">
+        <svg class="pillar-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <h3>Inclusive Access</h3>
+        <p>Helping people stay connected and access essential digital services.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<section id="brands">
+  <div class="container">
+    <div class="divider" style="margin-bottom:6rem"></div>
+    <div class="brands-header">
+      <div>
+        <span class="section-label">Our Brands</span>
+        <h2 class="section-title">Multi-Brand Portfolio</h2>
+      </div>
+      <p class="brands-desc">Operating under our multi-brand portfolio, we deliver specialized digital solutions for connectivity, travel, and intelligent automation.</p>
+    </div>
+    <div class="brands-grid">
+      <div class="glass brand-card"><a href="https://swiftreload.net" target="_blank" rel="noopener noreferrer" style="color:inherit">
+        <h3>SwiftReload™</h3>
+        <p>B2B digital goods platform providing global mobile top-ups and gift cards through API and reseller portals.</p>
+      </a></div>
+      <div class="glass brand-card"><a href="https://gloesim.com" target="_blank" rel="noopener noreferrer" style="color:inherit">
+        <h3>GloEsim™</h3>
+        <p>B2B eSIM distribution platform providing APIs and white-label solutions for global mobile data connectivity.</p>
+      </a></div>
+      <div class="glass brand-card"><a href="https://swiftrecharge.com" target="_blank" rel="noopener noreferrer" style="color:inherit">
+        <h3>SwiftRecharge™</h3>
+        <p>Global super app for digital services, enabling users to access mobile top-ups, gift cards, and everyday services worldwide.</p>
+      </a></div>
+      <div class="glass brand-card"><a href="https://hallocall.com" target="_blank" rel="noopener noreferrer" style="color:inherit">
+        <h3>HalloCall™</h3>
+        <p>Consumer eSIM marketplace offering instant mobile data plans for travelers and global users.</p>
+      </a></div>
+      <div class="glass brand-card"><a href="https://simallo.com" target="_blank" rel="noopener noreferrer" style="color:inherit">
+        <h3>SIMALLO™</h3>
+        <p>Consumer platform for global travel eSIM data plans with fast activation and worldwide coverage.</p>
+      </a></div>
+      <div class="glass brand-card"><a href="https://esim.vu" target="_blank" rel="noopener noreferrer" style="color:inherit">
+        <h3>eSIMvu™</h3>
+        <p>Digital marketplace for travel eSIM plans providing instant mobile data connectivity worldwide.</p>
+      </a></div>
+      <div class="glass brand-card"><a href="https://tareeqo.com" target="_blank" rel="noopener noreferrer" style="color:inherit">
+        <h3>Tareeqo™</h3>
+        <p>Global learning platform connecting students with trusted educators for Quran, Islamic studies, and academic subjects through live online sessions.</p>
+      </a></div>
+      <div class="glass brand-card"><a href="https://anvar.ai" target="_blank" rel="noopener noreferrer" style="color:inherit">
+        <h3>AnvarAI™</h3>
+        <p>AI-powered digital assistant technology designed to support automation, insights, and intelligent user experiences across platforms.</p>
+      </a></div>
+      <div class="glass brand-card"><a href="https://traveeqo.com" target="_blank" rel="noopener noreferrer" style="color:inherit">
+        <h3>Traveeqo™</h3>
+        <p>AI-powered global travel super app integrating flights, hotels, eSIM connectivity, and essential travel services into one seamless experience.</p>
+      </a></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section>
+  <div class="container">
+    <div class="divider" style="margin-bottom:6rem"></div>
+    <div class="glass cta-box">
+      <h2 class="section-title">Join Us in Shaping the Future</h2>
+      <p>Digital freedom and community impact, working hand-in-hand. Let's connect and explore how we can collaborate.</p>
+      <a href="mailto:partnership@swiftreload.com" class="btn-primary">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <img src="Swiftreload_grp_icon.webp" alt="SwiftReload" />
+      <span>SwiftReload Group</span>
+    </div>
+    <span class="footer-copy">&copy; 2025 SwiftReload Group. All rights reserved.</span>
+  </div>
+</footer>
+
+</body>
+</html>
